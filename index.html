@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Insulin Calculator</title>
+    <title>Online Insulin Calculator</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
@@ -14,17 +14,18 @@
         padding: 0;
     }
     .github-corner {
-        position: absolute;
-        top: 0;
-        right: 0;
+        position: fixed;
+        bottom: 20px; /* Adjust this value as needed */
+        right: 20px; /* Adjust this value as needed */
         padding: 10px;
+        z-index: 1000; /* Ensure it appears above other content */
     }
     .github-corner a {
-        color: black;
+        color: #4078c0;
         text-decoration: none;
     }
     .github-corner a:hover {
-        color: #4078c0;
+        color: black;
     }
 </style>
 
@@ -78,15 +79,15 @@
 
     <script>
         function calculate() {
-            const sugar = document.getElementById('sugar').value;
-            const goal  = document.getElementById('goal').value;
-            const sens  = document.getElementById('sens').value;
-            const icr   = document.getElementById('icr').value;
-            const cte   = document.getElementById('cte').value;
+            const bs  = document.getElementById('sugar').value;
+            const gbs = document.getElementById('goal').value;
+            const sf  = document.getElementById('sens').value;
+            const icr  = document.getElementById('icr').value;
+            const cte  = document.getElementById('cte').value;
 
             const resultDiv = document.getElementById('result');
 
-            var resultValue = ((sugar-goal)/sens) + (cte / icr)
+            var resultValue = (bs - gbs) / sf + cte / icr
 
             resultDiv.style = ''
             resultDiv.innerHTML = `
