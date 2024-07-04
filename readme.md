@@ -24,7 +24,6 @@ This insulin calculator was made to help Type 1 diabetics determine their insuli
 ## Technologies Used
 
 - **Frontend:** HTML, CSS, JavaScript
-- **Backend (Optional):** Node.js, Express.js
 
 ## Usage
 
