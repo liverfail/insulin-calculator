@@ -28,7 +28,7 @@ This insulin calculator was made to help Type 1 diabetics determine their insuli
 
 ## Usage
 
-Simply go to the production website [here](https://liverfail.github.io/insulin-calculator)
+Simply go to the production website [here](https://liverfail.github.io/insulin-calculator).
 
 ## Contributing
 
