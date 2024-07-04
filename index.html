@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insulin Calculator</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+    }
+    .github-corner {
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 10px;
+    }
+    .github-corner a {
+        color: black;
+        text-decoration: none;
+    }
+    .github-corner a:hover {
+        color: #4078c0;
+    }
+</style>
+
+<body class="bg-gray-100">
+    <!-- Navbar -->
+    <nav class="bg-blue-500 p-4">
+        <div class="container mx-auto">
+            <h1 class="text-white text-xl font-bold">liverfail's tools</h1>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="flex flex-col items-center min-h-screen mt-20">
+        <h2 class="text-2xl font-bold mt-6 mb-4">Insulin Calculator</h2>
+        <div class="bg-white p-8 rounded-lg shadow-lg">
+            <form id="numberForm" class="space-y-4">
+                <div>
+                    <label for="sugar" class="block text-sm font-medium text-gray-700">Blood Sugar</label>
+                    <input type="number" id="sugar" class="mt-1 block w-full p-2 border border-gray-300 rounded-md">
+                </div>
+                <div>
+                    <label for="goal" class="block text-sm font-medium text-gray-700">Goal Blood Sugar</label>
+                    <input type="number" id="goal" class="mt-1 block w-full p-2 border border-gray-300 rounded-md">
+                </div>
+                <div>
+                    <label for="sens" class="block text-sm font-medium text-gray-700">Sensitivity Factor</label>
+                    <input type="number" id="sens" class="mt-1 block w-full p-2 border border-gray-300 rounded-md">
+                </div>
+                <div>
+                    <label for="icr" class="block text-sm font-medium text-gray-700">Insulin Carb Ratio</label>
+                    <input type="number" id="icr" class="mt-1 block w-full p-2 border border-gray-300 rounded-md">
+                </div>
+                <div>
+                    <label for="cte" class="block text-sm font-medium text-gray-700">Carbs To Eat</label>
+                    <input type="number" id="cte" class="mt-1 block w-full p-2 border border-gray-300 rounded-md">
+                </div>
+                <div>
+                    <button type="button" onclick="calculate()" class="w-full py-2 px-4 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600">Submit</button>
+                </div>
+            </form>
+            <div id="result" style="display: none;" class="mt-4 p-4 bg-gray-100 rounded-md shadow-inner"></div>
+
+        </div>
+    </div>
+
+    <div class="github-corner">
+        <a href="https://github.com/liverfail/insulin-calculator" target="_blank">
+            <i class="fab fa-github fa-2x"></i>
+        </a>
+    </div>
+
+    <script>
+        function calculate() {
+            const sugar = document.getElementById('sugar').value;
+            const goal  = document.getElementById('goal').value;
+            const sens  = document.getElementById('sens').value;
+            const icr   = document.getElementById('icr').value;
+            const cte   = document.getElementById('cte').value;
+
+            const resultDiv = document.getElementById('result');
+
+            var resultValue = ((sugar-goal)/sens) + (cte / icr)
+
+            resultDiv.style = ''
+            resultDiv.innerHTML = `
+                <p><strong>You need to dose</strong> ${resultValue.toFixed(2)} <strong>units of insulin</strong></p>
+            `;
+        }
+    </script>
+</body>
+</html>
